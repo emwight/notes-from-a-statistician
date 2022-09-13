@@ -1,0 +1,21 @@
+---
+layout: post
+title:  Why Blog?
+date:   2022-09-13
+author: Ellen Wight
+description: Why data scientists create blogs and why I'm joining the herd
+image: /assets/images/notepad.jpg
+---
+
+
+Data science blogs, from Medium's Towards Data Science to r/datascience, are becoming increasingly popular and prevalent as the field combining statistics and programming grows. As new possibilities for analysis appear almost exponentially with the advent of big data, data scientists are looking for ways to stand out in their field. Blog posts provide practice, exposure, and in some cases careers to this growing market.
+
+### A wise man once said
+I could summarize everything I've heard about blog posts, but sometimes it's best to just go to the source. Does that make me lazy? Maybe, but this is a practice blog post and I'm no authority on what makes for a good blog or how successful they'll really become. Thanks to Dr. Tass for these links.
+ - [Advice from a data science blogger](http://varianceexplained.org/r/start-blog/)
+ - [How to write a data science blog](https://www.youtube.com/watch?v=kKK9uqnjgd0)
+ - [How to write technical blog posts](https://www.youtube.com/watch?v=YODPgBadj80)
+ - [Guide to helpful data science blogs](https://www.thinkful.com/blog/data-science-blogs/)
+
+### Do it for the ~~vine~~ grade
+The reason I'm starting my blog in the first place is my Stat 386 course, which will be the source of these first few blog posts. These posts will include a tutorial, and EDA from a webscraping project, and the ethics of data science. Specific topics for those? That's yet to be determined, but I'll come up with something by the assignment deadline.
