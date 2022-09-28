@@ -14,28 +14,24 @@ Monte Carlo is a simulation technique that uses repeated random trials to model 
 
 How large of a sample is needed? Generally about 10,000 simulated values are used to fulfill the Law of Large Numbers. As a quick illustration, consider the probability of rolling one standard die represented as a discrete uniform distribution. In R, we can approximate the known probability distribution using the `purrr:rdunif(n, 1, 6)` function as our Monte Carlo simulation with sample size n. Below are three graphs with increasing sample sizes to show the computational approach to the mathematically true probabilities.
 
-![Law of Large Numbers](/assets/images/rolls.png)
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/rolls.png" height="400" align="middle"/>
 
 This isn't interesting for any analysis, of course; it simply visualizes the intuitive nature of Monte Carlo. If we draw many values from a distribution, it follows that a high enough sample size would yield an approximate shape of that distribution. By combining distribution simulations, however, Monte Carlo becomes useful for approximating what can't be calculated mathematically. What if we wanted to simulate not only the average sum of many dice rolled, but also if certain players at a dice-rolling game, such as Dungeons & Dragons, were inexplicably better at rolling dice than others? I won't get into testing the validity of the legendary [Wil Wheaton Curse](http://folklore.usc.edu/dungeons-and-dragons-superstition-wil-wheaton-dice-curse/) yet, but Monte Carlo can be used to settle a long-standing feud between two other players: Liam O'Brien and Sam Riegel.
 
-## Data Description: D&D Feud
-Back in 2019, two players (mortal enemies$^1$) from the popular D&D show _Critical Role_ campaigned for the position of president of the company D&D Beyond. While neither player was declared the u. . . I, however, suggest a rematch: who builds characters that deal the most damage on average? Both Sam and Liam have played rogues and one character in a full-casting class (wizard and bard). As such, the deciding factor, besides chance, is how much each player builds their character to deal direct damage to enemies.
 
-To model the probability of one player rolling better than another on average, I will use a Bayesian analysis of the Poisson-Gamma conjugate prior. Normally, sums or averages of dice rolls suggest a Normal distribution, but considering the varying number of dice and type of dice rolled, I will treat the data points as counts of damage dealt (measured in hit points) for each total damage roll. The Gamma distribution then models the average damage dealt, which generally will be on the lower end with some really high rolls as characters level up.
+## Data Description: D&D Feud 
 
-With a $\lambda \sim \text{Gamma}(1,0.1)$ prior for both Liam and Sam, I update the distribution on $\lambda$ with the likelihood of observing the data I obtained from [critrolestats](https://www.critrolestats.com), I constructed a posterior distribution for each player:
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/vote.jpeg" width="350" align="right"/>
 
+Back in 2019, two players from the popular D&D show _Critical Role_ campaigned for the position of president of the company D&D Beyond. The two eventually reconciled and became copresidents. If in the future another election should approach, I suggest a battle royale rematch (in-game of course). Predicting the winner then begs the question: who deals the most damage on average? Both Sam and Liam have played rogues and characters in a full or partial-casting class (bard/artificer and wizard). As such, the deciding factor, besides chance, is how much each player builds their character to deal direct damage to enemies.
 
-![Posteriors](/assets/images/posterior.png)
+To model the probability of one player rolling better than another on average, I will use a Bayesian analysis of the Poisson-Gamma conjugate prior. Normally, sums or averages of dice rolls suggest a Normal distribution, but considering the varying number of dice and type of dice rolled, I will treat the dice rolls as counts of damage dealt (measured in hit points) for each total damage roll. The Gamma distribution then models the average damage dealt, which generally will be on the lower end with some really high rolls as characters level up.
 
-# Image + background, character class balance, why using Pois-Gamma (count if doing a sum? -> count of HP damage dealt since type of die and number of dice rolled vary a lot, so Pois for data and Gamma represents expected sum of rolls)
+With a $\lambda \sim \text{Gamma}(1,0.1)$ prior for both Liam and Sam, I updated the distribution on $\lambda$ with the likelihood of observing the data that I obtained from [critrolestats](https://www.critrolestats.com). From that, I constructed a posterior distribution for each player:
 
-# Quick explanation of Pois-Gamma, with graphs of Prior and Posterior
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/posterior.png" height="400"/>
 
-# CITE CRITROLESTATS WITH LINK
-# IMAGE EXPLAINING BAYESIAN ANALYSIS PRIOR -> POSTERIOR
-# LINK TO REST OF CODE
-# ADD FOOTNOTE ABOUT THE MORTAL ENEMIES THING LOL
+Clearly Liam is the winner, but by what margin? After all this exposition, it's finally time to discover the power of Monte Carlo.
 
 ## Difference between Population Means
 
@@ -46,21 +42,20 @@ With a $\lambda \sim \text{Gamma}(1,0.1)$ prior for both Liam and Sam, I update 
 3. Calculate the difference between the two
 4. Repeat many times
 
-With the element-wise function capabilities that R has for vectors, this becomes very simple computationally:
+With the element-wise capabilities that R has for vectors, this becomes very simple computationally:
 
 # R Code Here
 
 ## The Victor of O'Brien v. Riegel
 
-![Posteriors](/assets/images/mc_diff.png)
+![Difference between Means](https://github.com/emwight/stat386-projects/raw/main/assets/images/mc_diff.png)
 
 # Graphs, credible interval, analysis of how players construct their characters (without going too much into lore or stats lol)
 
 # greater implications of this silly example
 
 
-## Monte Carlo Reference Sites
-For sources and more information:
+## MC References
 
 [IBM Cloud Education (provides a comprehensive overview)](https://www.ibm.com/cloud/learn/monte-carlo-simulation)
 
