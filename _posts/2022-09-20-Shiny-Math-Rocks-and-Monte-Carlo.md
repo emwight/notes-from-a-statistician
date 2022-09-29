@@ -35,7 +35,7 @@ Clearly Liam is the winner, but by what margin? After all this exposition, it's 
 
 ## Difference between Population Means
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/bad plot.png" align="right"/>
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/bad plot.png" align="right" height="350"/>
 
 Our analysis goal is to find a distribution representing the difference between average damage rolls for Liam and those for Sam, with the assumption that those two players are independent in how they roll. However, this isn't as simple as subtracting the parameters of the two posterior distributions. For one, let's say we wanted to find (Sam - Liam) as our difference. We'd end up with a Gamma(-4370,-149), which doesn't exist because the parameters for this distribution must be greater than 0. If we did (Liam - Sam), we'd at least get a distribution, but it doesn't reflect what we're trying to model.  We'd expect the distribution to be centered close to somewhere between 0-5 HP, considering the visual difference between the plots of the posteriors. However, the graph to the right visualizes that merely subtracting parameters doesn't yield those results.  This can also be proven mathematically through the Moment Generating Function, but the point is we need to approximate this distribution through a Monte Carlo simulation.
 
