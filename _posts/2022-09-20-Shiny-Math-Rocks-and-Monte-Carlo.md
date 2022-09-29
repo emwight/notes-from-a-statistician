@@ -27,7 +27,7 @@ Back in 2019, two players from the popular D&D show _Critical Role_ embarked on 
 
 To model the probability of one player rolling better than another on average, I will use a Bayesian analysis of the Poisson-Gamma conjugate prior. Normally, sums or averages of dice rolls suggest a Normal distribution, but considering the varying number of and type of dice rolled, I will treat the dice rolls as counts of damage dealt (measured in hit points) for each total damage roll. The Gamma distribution then models the average damage dealt, which generally will be on the lower end with some really high rolls as characters level up.
 
-With a Gamma(1,0.1) prior for both Liam and Sam, I updated the prior using the likelihood of observing the data that I obtained from [critrolestats](https://www.critrolestats.com). From that, I constructed a posterior distribution for each player:
+With a Gamma(1,0.1) prior for both Liam and Sam, I updated the prior using the likelihood of observing the data that I obtained from [CritRoleStats](https://www.critrolestats.com). From that, I constructed a posterior distribution for each player:
 
 <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/posterior.png" height="400"/>
 
@@ -86,3 +86,8 @@ On a slightly more serious note, this was a purposefully silly example that prov
 [Investopedia (applications in risk and finance)](https://www.investopedia.com/terms/m/montecarlosimulation.asp)
 
 Kroese, D. P., Brereton, T., Taimre, T., and Botev, Z. I. (2014). "Why the Monte Carlo method is so important today," _WIREs Computational Statistics (Vol 6)_ [online], 6, 386-392, DOI: [10.1002/wics.1314](https://doi.org/10.1002/wics.1314). Available at https://wires.onlinelibrary.wiley.com/doi/10.1002/wics.1314
+
+## Other Sources
+All images came from free stock photos or graphs made in R by the author, except the image of the D&D Beyond presidential campaign (link [here](https://www.dndbeyond.com/critical-role-election))
+
+As mentioned before, data for this analysis is thanks to [CritRoleStats](https://www.critrolestats.com), a fan-run website that keeps track of stats and lore from Critical Role
