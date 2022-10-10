@@ -4,7 +4,7 @@ title:  "A Brief Overview of Monte Carlo Approximation"
 date:   2022-10-09
 author: Ellen Wight
 description: FOR WRTG 316, NOT MY STAT 386 BLOG TUTORIAL
-image: /assets/images/DnD.jpg
+image: /assets/images/lines.png
 ---
 
 ## Definition
@@ -23,16 +23,26 @@ This isn't interesting for any analysis, of course; it simply visualizes the int
 Monte Carlo has become especially useful in the field of Bayesian analysis. Compared to the traditional Frequentist approach to statistics, which considers population parameters as fixed values, Bayesian analysis states that population parameters are unknown random variables that follow a probability distribution estimated by both prior knowledge and collected data. For example, the proportion of students at a university taking a certain class could fall anywhere between 0 and 1. A Bayesian approach would estimate the expected proportion by combining prior knowledge about the popularity and difficulty of the class with data collected from a random sample of students. Monte Carlo allows for combinations of those "posterior" distributions, vastly expanding the analytic capabilities of the approach.
 
 ### Combining Distributions (Addition, etc.)
-As visualized in the first graph exemplifying Monte Carlo, the sum of two distributions isn't necessarily the sum of the parameters of the same distribution class. In other words, the sum of two Uniform distributions, each ranging from A=1 to B=6, doesn't yield a Uniform distribution that goes between A=2 (1+1) and B=12. This can be mathematically proven, and there are cases where a known, parameterized distribution can be mathematically calculated from these combinations, but often a Monte Carlo approximation is the best method. From the simulated values, we can approximate the expected value of a population. Going back to the first example, the average approximated sum was 7.05, which is only 0.5 off from the true sum that would be expected to have the highest frequency.
+As visualized in the first graph exemplifying Monte Carlo, the sum of two distributions isn't necessarily the sum of the parameters of the same distribution class. In other words, the sum of two Uniform distributions, each ranging from A=1 to B=6, doesn't yield a Uniform distribution that goes between A=2 (1+1) and B=12. There are are cases where a known, parameterized distribution can be mathematically calculated from these combinations, but a Monte Carlo approximation is often the best method.
 
 ### Predictive Distributions
+Let's go back to the example of the proportion of students taking a class. The Bayesian analysis mentioned before would estimate the expected population proportion of university students wanting to take the class, a random variable assigned as &theta;. However, what if we wanted to determine how many students out of just the upcoming freshman class, not the population as a whole? This requires a predictive distribution, in this case a Binomial distribution that predicts the number of successes x out of n trials (number of students) with a probability of success &theta;. If that last term looks familiar, that's becaues Monte Carlo can be used to first randomly draw potential values of &theta;, then randomly draw potential values of x corresponding to each &theta; value. The result looks something like this graph:
+
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/beta.png" align="middle"/>
+
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/binom.png" align="middle"/>
 
 ### Multiple Population Parameters
+Gibbs sampling and MCMC: randomly select value of first parameter using a set first value of the second parameter, randomly select value of second parameter using that sampled value of the first parameter, etc.
 
+MCMC: Markov Chain Monte Carlo; uses the random sampling of Monte Carlo and the predictive space of a Markov Chain. We predict where the next instance of the parameter will be based only on how things currently are (current value of other parameters that influence the value of this parameter)
+
+Gibbs sampling: special case of MCMC
 
 ## Other Applications
+Economics and finance, Industrial/Operations research, nature of physical processes in physics, chemistry, and biology, analysis of new materials with limited data, 
 
-## Sources
+## Resources
 
 [Britannica (Law of Large Numbers)](https://www.britannica.com/science/law-of-large-numbers)
 
@@ -40,5 +50,10 @@ As visualized in the first graph exemplifying Monte Carlo, the sum of two distri
 
 [Investopedia (Monte Carlo applications in risk and finance)](https://www.investopedia.com/terms/m/montecarlosimulation.asp)
 
+[Towards Data Science (introduction to MCMC)](https://towardsdatascience.com/monte-carlo-markov-chain-mcmc-explained-94e3a6c8de11)
+
+
 Kroese, D. P., Brereton, T., Taimre, T., and Botev, Z. I. (2014). "Why the Monte Carlo method is so important today," _WIREs Computational Statistics (Vol 6)_ [online], 6, 386-392, DOI: [10.1002/wics.1314](https://doi.org/10.1002/wics.1314). Available at https://wires.onlinelibrary.wiley.com/doi/10.1002/wics.1314
 Provides a definition, uses, applications outside of pure statistics, and the potential future of the Monte Carlo simulation.
+
+van Ravenzwajj, D., Cassey, P., Brown, S. D. (2018). "A simple introduction to Markov Chain Monte &ndash; Carlo sampling," _Psychonomic Bulliten and Review (Vol 25)_ [online], 143-154, DOI: [10.3758/s13423-016-1015-8](https://doi.org/10.3758/s13423-016-1015-8). Available at https://link.springer.com/article/10.3758/s13423-016-1015-8.
