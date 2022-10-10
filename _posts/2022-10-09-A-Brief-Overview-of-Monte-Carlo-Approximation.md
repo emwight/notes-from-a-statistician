@@ -3,8 +3,8 @@ layout: post
 title:  "A Brief Overview of Monte Carlo Approximation"
 date:   2022-10-09
 author: Ellen Wight
-description: Dr. Tass/386 peeps: This is a technical description for my WRTG 316 class :) my blog tutorial is the shiny math rocks post lol
-image: 
+description: FOR WRTG 316, NOT MY STAT 386 BLOG TUTORIAL
+image: /assets/images/DnD.jpg
 ---
 
 ## Definition
