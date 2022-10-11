@@ -34,7 +34,7 @@ The sum of two distributions isn't just the sum of the parameters used in the sa
 ### Predictive Distributions
 A second issue that Monte Carlo solves is the question of average vs. individual: we may know the average sum of two dice (in a casino winnings or losses on average), but often we want to know what the next roll will be. Monte Carlo can predict that next roll by simulating new data based on the known likelihood. First, random parameter values are drawn from the posterior to create sample populations. Second, one sample or predicted "data point" is drawn from the likelihood using each simulated population parameter. The result is a distribution on the individual occurrences of data points, independent of the distribution on the population parameter.
 
-### Putting It Together with D&D
+## Monte Carlo and D&D
 As a brief demonstration of the applicability of Monte Carlo, let's look at an example difference between average counts and a predictive distribution. For our D&D players, let's look at rolls for damage to enemies from Liam O'Brien and Sam Riegel from the show _Critical Role_. Combining prior knowledge and data from [CritRoleStats](https://www.critrolestats.com/), Bayesian analysis first produces these two distinct posterior distributions:
 
 <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/posterior.png" height="400"/>
