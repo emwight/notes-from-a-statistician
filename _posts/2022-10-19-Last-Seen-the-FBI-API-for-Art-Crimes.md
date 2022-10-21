@@ -36,7 +36,7 @@ thievery = pd.concat([pd.DataFrame(r.json()['items']) for r in rs], ignore_index
 thievery = thievery.loc[:,['title', 'maker', 'crimeCategory', 'materials', 'period', 'measurements']]
 ```
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/raw.png" height="400" align="middle"/>
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/raw.png" height="300" align="middle"/>
 
 Doesn't look very pretty, does it? At least for analysis purposes. Either because the site wasn't created with web scraping in mind (and most aren't), or the data entry team didn't set standardized practices for reporting measurements, or a myriad of other reasons. Before analysis, we will have to clean the data to get it into a more readable format for the computer instead of humans.
 
@@ -52,16 +52,24 @@ Python, especially `pandas`, has countless functions to streamline data cleaning
 Most of the other functions used come from the pandas.Series.[str](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.capitalize.html) methods, which are existing Python regex and other string functions applied to a Pandas column.
 
 ### The Good
-Maker, Crime Category, and Materials were the simplest to standardize, requiring only small changes to correct differences in how data was entered. For example, a Crime Category would be coded either as "dolls,and,figurines" or "dolls-and-figurines," which give the same information to a human but look very different to a computer. This is relatively easy to fix, but demonstrates why standardizing data entry methods is crucial to saving time when the data is needed in the future.
+Maker, Crime Category, and Materials (Title, functionally an ID column, wasn't cleaned at all) were the simplest to standardize, requiring only small changes to correct differences in how data was entered. For example, a Crime Category would be coded either as "dolls,and,figurines" or "dolls-and-figurines," which give the same information to a human but look very different to a computer. This is relatively easy to fix, but demonstrates why standardizing data entry methods is crucial to saving time later when the analysts need to use the data. More cleaning might happen later on as I research which materials or crime categories would be most appropriate to treat as one broad category.
 
 ### The Bad
- - period
+Period didn't have specific years for every art piece, so instead of creating a numeric column from this variable, I grouped pieces by century. The certainty of when pieces were created varied dramatically, resulting in a few different cases to deal with.
+ - Era, such as Song Dynasty, which went into the "other" group
+ - Years and year ranges, such as 1953 or 1890-1950, which either went into its corresponding century or into "other" if it spanned more than one century
+ - Additionally, qualifiers like "mid" and "circa" were ignored in the grouping process
 
 ### The Ugly
- - turning measurements into size (w/ units)
+
+
+### Pretty (or at least prettier) Data
+After hours of work and probably too many hardcoded special cases (let me know if you have any ideas for simplifying my code), we have our cleaned dataset! 
+
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/clean.png" height="400" align="middle"/>
 
 ## Conclusion
-
+Ideally, the number of stolen art pieces will one day be zero. In the meantime, however, we can use information about these pieces to identify trends in art thefts and determine what pieces might need more protection than others. Perhaps by the time my EDA comes out, I'll have found information about the value of these pieces, their country of origin, when they were stolen, and where they were taken from. If you know where I could find this information publicly please comment below!
 
 <a title="Andre Carrotflower, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:20180527_-_20_-_Boston,_MA_(Isabella_Stewart_Gardner_Museum).jpg"><img width="512" alt="20180527 - 20 - Boston, MA (Isabella Stewart Gardner Museum)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/20180527_-_20_-_Boston%2C_MA_%28Isabella_Stewart_Gardner_Museum%29.jpg/512px-20180527_-_20_-_Boston%2C_MA_%28Isabella_Stewart_Gardner_Museum%29.jpg"></a>
 
