@@ -13,7 +13,7 @@ Imagine walking through a museum and entering a room full of frames like the one
 
 <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/missing.jpg" height="400" align="middle"/>
 
-In 2013, French artist Sophie Callie posed [this question](https://aperture.org/editorial/what-do-you-see/) to visitors of the Isabella Stewart Gardner Museum. Both that project and her previous work _Last Seen_ (in which she instead interviewed museum employees) explored the cultural and artistic loss from a [theft in 1990](https://www.gardnermuseum.org/organization/theft), which involved thirteen works of art and still remains unsolved. **FINISH**
+In 2013, French artist Sophie Callie posed [this question](https://aperture.org/editorial/what-do-you-see/) to visitors of the Isabella Stewart Gardner Museum. Both that project and her previous work _Last Seen_ (in which she instead interviewed museum employees) explored the cultural and artistic loss from a [theft in 1990](https://www.gardnermuseum.org/organization/theft), which involved thirteen works of art and still remains unsolved. This isn't an uncommon occurrence; the FBI has over 3,500 stolen art pieces publicly on file. Are there any significant commonalities or differences between the art pieces that are either taken or refuse to be found? For this project, I will get art theft data from the FBI, clean it for analysis, and perform an EDA on the resulting dataset in a future blog post. 
 
 ## Data Collection
 
@@ -41,9 +41,18 @@ thievery = thievery.loc[:,['title', 'maker', 'crimeCategory', 'materials', 'peri
 Doesn't look very pretty, does it? At least for analysis purposes. Either because the site wasn't created with web scraping in mind (and most aren't), or the data entry team didn't set standardized practices for reporting measurements, or a myriad of other reasons. Before analysis, we will have to clean the data to get it into a more readable format for the computer instead of humans.
 
 ## Data Cleaning
+Python, especially `pandas`, has countless functions to streamline data cleaning. The process is still tedious at best and endlessly time-consuming at worst, but going through each variable and cleaning on a case-by-case basis turns the frustration into a (hopefully) satisfying puzzle. Our dataset starts out with only string-type data, so these three functions will be our best friends:
+
+`DataFrame['variable'].value_counts()`: This returns each level, and the corresponding frequency, of a categorical variable. For us, it's a way to check that every case has been accounted for.
+
+`DataFrame['variable'].replace(string to find, string to replace, regex=True, inplace=True)`: This looks for a string within each value of the column and replaces it as specified. `regex = True` tells Python to use [regex](https://www.oreilly.com/content/an-introduction-to-regular-expressions/) rather than exact matching; inplace=True tells it to directly update the values in the dataset rather than return a copy of the data.
+
+`np.where(condition, value if True, value if False)`: This is the equivalent of a simple if_else statement.
+
+Most of the other functions used come from the pandas.Series.[str](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.capitalize.html) methods, which are existing Python regex and other string functions applied to a Pandas column.
 
 ### The Good
- - process for everything except period and measurements
+Maker, Crime Category, and Materials were the simplest to standardize, requiring only small changes to correct differences in how data was entered. For example, a Crime Category would be coded either as "dolls,and,figurines" or "dolls-and-figurines," which give the same information to a human but look very different to a computer. This is relatively easy to fix, but demonstrates why standardizing data entry methods is crucial to saving time when the data is needed in the future.
 
 ### The Bad
  - period
@@ -54,5 +63,5 @@ Doesn't look very pretty, does it? At least for analysis purposes. Either becaus
 ## Conclusion
 
 
-<a title="Andre Carrotflower, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:20180527_-_20_-_Boston,_MA_(Isabella_Stewart_Gardner_Museum).jpg"><em>Isabella Stewart Gardner Museum, Raphael Room</em><img width="512" alt="20180527 - 20 - Boston, MA (Isabella Stewart Gardner Museum)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/20180527_-_20_-_Boston%2C_MA_%28Isabella_Stewart_Gardner_Museum%29.jpg/512px-20180527_-_20_-_Boston%2C_MA_%28Isabella_Stewart_Gardner_Museum%29.jpg"></a>
+<a title="Andre Carrotflower, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:20180527_-_20_-_Boston,_MA_(Isabella_Stewart_Gardner_Museum).jpg"><img width="512" alt="20180527 - 20 - Boston, MA (Isabella Stewart Gardner Museum)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/20180527_-_20_-_Boston%2C_MA_%28Isabella_Stewart_Gardner_Museum%29.jpg/512px-20180527_-_20_-_Boston%2C_MA_%28Isabella_Stewart_Gardner_Museum%29.jpg"></a>
 
