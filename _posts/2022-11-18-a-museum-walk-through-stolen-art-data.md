@@ -22,13 +22,14 @@ When removing outliers, I set arbitrary cut-offs based on the initial plot to re
 
 <p float="left">
   
-  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/without outliers.png" width="500" />
-  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/filled outliers.png" width="500" /> 
+  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/without outliers.png" width="300" />
+  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/filled outliers.png" width="300" /> 
   
 </p>
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/summarize.png" width="500" align="right"/>
-Summary statistics from each method can be seen on the right. The median didn't change much between the different methods, but the mean and standard deviation did. This may not be an issue since the data are skewed already. If we wanted to perform any means-based analysis, however, we'd want to be cautious about which method we went with to fill in values.<br />
+Summary statistics from each method can be seen in the table below. The median didn't change much between the different methods, but the mean and standard deviation did. This may not be an issue since the data are skewed already. If we wanted to perform any means-based analysis, however, we'd want to be cautious about which method we went with to fill in values.
+<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/summarize.png" width="500"/>
+
 
 ## Most Extreme Outliers
 Finally, it's important to look at why the outliers might exist. Most stolen pieces are easily small enough for a thief to carry to a small truck, but how were the larger items likely stolen? Interestingly, the largest outliers for two-dimensional art pieces weren't bulky paintings - they were tapestries that a thief could roll up and carry with more ease. The largest one-dimensional outlier wasn't too long, all things considered, and the three-dimensional outliers look like cases of questionable data entry or choice of measurement (granted, I don't know much about rifles; they could come in sizes that large). When analyzing the data later, it might be fine to remove these high outlier values and replace the rest with random values from the IQR.
