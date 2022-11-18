@@ -6,6 +6,7 @@ author: Ellen Wight
 description: Building upon the last post about collecting FBI API data, we now move to exploring our data for patterns and interesting outliers.
 image: /assets/images/painting.jpg
 ---
+_Complete code and data found in this [repo](https://github.com/emwight/artscraper)_
 
 # Introduction
 Art theft isn't an uncommon practice (as evidenced by the over 4,000 pieces listed on just the FBI's [national stolen art file](https://www.fbi.gov/investigate/violent-crime/art-theft/national-stolen-art-file)), but what kinds of art pieces are more likely to be stolen or remain hidden? Using the FBI's [API](https://api.fbi.gov/docs#!/), I randomly sampled 1,000 pieces on file and cleaned the data to determine if there would be any patterns or significant outliers. More information can be found in my original [data cleaning post](https://emwight.github.io/stat386-projects/2022/10/19/Last-Seen-the-FBI-API-for-Art-Crimes.html), with updates to my process listed in my [repo README](https://github.com/emwight/artscraper).
