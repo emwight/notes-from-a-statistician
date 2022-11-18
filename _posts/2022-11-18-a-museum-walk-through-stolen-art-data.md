@@ -22,12 +22,13 @@ When removing outliers, I set arbitrary cut-offs based on the initial plot to re
 
 <p float="left">
   
-  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/without outliers.png" width="300" />
-  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/filled outliers.png" width="300" /> 
+  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/without outliers.png" width="400" />
+  <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/filled outliers.png" width="400" /> 
   
 </p>
 
 Summary statistics from each method can be seen in the table below. The median didn't change much between the different methods, but the mean and standard deviation did. This may not be an issue since the data are skewed already. If we wanted to perform any means-based analysis, however, we'd want to be cautious about which method we went with to fill in values.
+
 <img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/summarize.png" width="500"/>
 
 
