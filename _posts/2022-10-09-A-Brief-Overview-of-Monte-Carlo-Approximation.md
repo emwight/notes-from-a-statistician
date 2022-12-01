@@ -3,7 +3,7 @@ layout: post
 title:  "A Brief Overview of Monte Carlo Approximation"
 date:   2022-10-09
 author: Ellen Wight
-description: FOR WRTG 316, NOT MY STAT 386 BLOG TUTORIAL
+description: A technical description of the computer simulation technique
 image: /assets/images/lines.png
 ---
 
