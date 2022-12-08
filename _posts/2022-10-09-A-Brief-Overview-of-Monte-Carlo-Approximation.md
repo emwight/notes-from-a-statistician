@@ -10,12 +10,12 @@ image: /assets/images/lines.png
 ## Definition
 Monte Carlo approximation is a computer simulation technique that uses repeated random trials to model the potential outcomes of an uncertain event. By comparing frequencies of said outcomes to total trials, it also models probabilities. For example, consider the expected sum from rolling two standard dice while gambling in the method's namesake, the casino in Monaco. Given a known distribution or formula (the sum of two dice, each with an equal chance of rolling a 1-6), Monte Carlo produces a large, simulated dataset by randomly selecting potential sums.
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/Roll_sum.png" height="400" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/Roll_sum.png" height="400" align="middle"/>
 
 ## Theory
 How large of a sample is needed? The rule of thumb is generally 10,000 to fulfill the Law of Large Numbers (a theorem in statistics: as sample size from a population increases, the mean of that sample approaches the true population mean).  To illustrate the importance of a large sample size, consider the probability of rolling just one standard die. Below are three graphs with increasing sample sizes to show the computational approach to the mathematically true probabilities.
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/rolls.png" height="400" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/rolls.png" height="400" align="middle"/>
 
 This isn't interesting for any analysis, but it visualizes the intuitive nature of Monte Carlo. If we draw many values from a known distribution with set parameters, it follows that a high enough sample size would yield its approximate shape, center, and spread. By combining simulations, however, Monte Carlo becomes useful for approximating distributions that can't be calculated mathematically. What if we wanted to simulate not only the average sum of many dice rolled, but also if certain players at a dice-rolling game, such as Dungeons & Dragons, were inexplicably better at rolling dice than others? While collecting data by having players roll against each other hundreds of times could work, Monte Carlo simulation is efficient, easy, and versatile.
 
