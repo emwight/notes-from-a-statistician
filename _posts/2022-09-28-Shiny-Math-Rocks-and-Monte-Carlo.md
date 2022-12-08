@@ -14,14 +14,14 @@ Monte Carlo is a simulation technique that uses repeated random trials to model 
 
 How large of a sample is needed? Generally about 10,000 simulated values are used to fulfill the Law of Large Numbers. As a quick illustration, consider the probability of rolling one standard die represented as a discrete uniform distribution. In R, we can approximate the known probability distribution using the `purrr:rdunif(n, 1, 6)` function as our Monte Carlo simulation with sample size n. Below are three graphs with increasing sample sizes to show the computational approach to the mathematically true probabilities.
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/rolls.png" height="400" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/rolls.png" height="400" align="middle"/>
 
 This isn't interesting for any analysis, of course; it simply visualizes the intuitive nature of Monte Carlo. If we draw many values from a known distribution with set parameters, it follows that a high enough sample size would yield an approximate shape of that distribution. By combining distribution simulations, however, Monte Carlo becomes useful for approximating what can't be calculated mathematically. What if we wanted to simulate not only the average sum of many dice rolled, but also if certain players at a dice-rolling game, such as Dungeons & Dragons, were inexplicably better at rolling dice than others? I won't get into testing the validity of the legendary [Wil Wheaton Curse](http://folklore.usc.edu/dungeons-and-dragons-superstition-wil-wheaton-dice-curse/) yet, but Monte Carlo can be used to settle a long-standing feud between two other players: Liam O'Brien and Sam Riegel.
 
 
 ## Data Description: D&D Feud 
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/vote.jpeg" width="250" align="right"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/vote.jpeg" width="250" align="right"/>
 
 Back in 2019, two players from the popular D&D show _Critical Role_ embarked on a [presidential campaign](https://criticalrole.fandom.com/wiki/D%26D_Beyond_Presidential_Campaign) for the company D&D Beyond. The two eventually reconciled and became copresidents, or maybe Sam just ran out of comedic ad read material from that bit. If in the future another election should approach, I suggest a battle royale rematch (in-game of course). Predicting the winner then begs the question: who deals the most damage on average? Both Sam and Liam have played rogues and characters in a full or partial-casting class (bard/artificer and wizard). As such, the deciding factor, besides chance, is how much each player builds their character to deal direct damage to enemies.
 
@@ -29,13 +29,13 @@ To model the probability of one player rolling better than another on average, I
 
 With a Gamma(1, 0.1) prior for both Liam and Sam, I updated the prior using the likelihood of observing the data that I obtained from [CritRoleStats](https://www.critrolestats.com). From that, I constructed a posterior distribution for each player:
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/posterior.png" height="400"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/posterior.png" height="400"/>
 
 Clearly Liam is the winner, but by what margin? After all this exposition, it's finally time to discover the power of Monte Carlo.
 
 ## Difference between Population Means
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/bad plot.png" align="right" height="350"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/bad plot.png" align="right" height="350"/>
 
 Our analysis goal is to find a distribution representing the difference between average damage rolls for Liam and those for Sam, with the assumption that those two players are independent in how they roll. However, this isn't as simple as subtracting the parameters of the two posterior distributions. For one, let's say we wanted to find (Sam - Liam) as our difference. We'd end up with a Gamma(-4370,-149), which doesn't exist because the parameters for this distribution must be greater than 0. If we did (Liam - Sam), we'd at least get a distribution, but it doesn't reflect what we're trying to model.  We know we want a distribution that's centered around 0-5 HP, considering the visual difference between the plots of the posteriors. However, the graph to the right visualizes that merely subtracting parameters doesn't yield those results. This can also be proven mathematically through the Moment Generating Function, but the point is we need to approximate this distribution through a Monte Carlo simulation.
 
@@ -69,7 +69,7 @@ d_sim <- liam_sim - sam_sim
 
 This final `d_sim` object stores the simulated values of our approximated distribution, and with it, the definitive victor.
 
-![Difference between Means](https://github.com/emwight/stat386-projects/raw/main/assets/images/mc_diff.png)
+![Difference between Means](https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/mc_diff.png)
 
 As the graph above shows, Sam is nowhere close to building characters that deal the same amount of direct damage as Liam. In fact, there is a 95% probability that Liam, using our posterior distributions, rolls higher between about 1.9 and 3.9 hit points on average. These values, and the shape of the distribution, will change from iteration to iteration of the simulation, but by a marginal amount considering the high sample size of 10,000.
 
