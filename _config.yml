@@ -22,7 +22,7 @@ title: Notes from a Statistician # Make a title for your blog
 email: ellen.m.wight@gmail.com # Add your email 
 description: >- # this means to ignore newlines until "baseurl:"
  Random thoughts about statistics and how it applies to music, D&D, and any other bouts of random analysis 
-baseurl: "/stat386-projects" # keep this the same or change it to the name of the repository 
+baseurl: "/notes-from-a-statistician" # keep this the same or change it to the name of the repository 
 url: "https://emwight.github.io" #  change this to "https://<your-github-username>.github.io"
 image: "assets/images/laptop and piano.jpg"
 author: Ellen Wight
