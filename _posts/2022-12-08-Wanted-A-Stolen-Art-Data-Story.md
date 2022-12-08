@@ -12,7 +12,7 @@ _Complete code and data found in this [repo](https://github.com/emwight/artscrap
 
 
 # Data Story
-The graphic below summarizes and expands on the most interesting findings from a previous [EDA](https://emwight.github.io/stat386-projects/2022/11/18/a-museum-walk-through-stolen-art-data.html). 
+The graphic below summarizes and expands on the most interesting findings from a previous [EDA](https://emwight.github.io/notes-from-a-statistician/2022/11/18/a-museum-walk-through-stolen-art-data.html). 
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/Stat 386 data story.png"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/Stat 386 data story.png"/>
 
