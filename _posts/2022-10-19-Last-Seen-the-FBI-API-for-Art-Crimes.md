@@ -11,7 +11,7 @@ _Complete code and data found in this [repo](https://github.com/emwight/artscrap
 ## Introduction
 Imagine walking through a museum and entering a room full of frames like the ones pictured below. What do you see?
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/missing.jpg" height="400" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/missing.jpg" height="400" align="middle"/>
 
 In 2013, French artist Sophie Calle posed [this question](https://aperture.org/editorial/what-do-you-see/) to visitors of the Isabella Stewart Gardner Museum. Both that project and her previous work _Last Seen_ (in which she instead interviewed museum employees) explored the cultural and artistic loss from a [theft in 1990](https://www.gardnermuseum.org/organization/theft), which involved thirteen works of art and still remains unsolved. This isn't an uncommon occurrence; the FBI has over 3,500 stolen art pieces publicly on file. Are there any significant commonalities or differences between the art pieces that are either taken or refuse to be found? For this project, I will get art theft data from the FBI, clean it for analysis, and perform an EDA on the resulting dataset in a future blog post. 
 
@@ -37,7 +37,7 @@ thievery = pd.concat([pd.DataFrame(r.json()['items']) for r in rs], ignore_index
 thievery = thievery.loc[:,['title', 'maker', 'crimeCategory', 'materials', 'period', 'measurements']]
 ```
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/raw.png" height="300" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/raw.png" height="300" align="middle"/>
 
 Doesn't look very pretty, does it? At least for analysis purposes. Either because the site wasn't created with web scraping in mind (and most aren't), or the data entry team didn't set standardized practices for reporting measurements, or a myriad of other reasons. Before analysis, we will have to clean the data to get it into a more readable format for the computer instead of humans.
 
@@ -73,14 +73,14 @@ Finally, the challenge of turning a categorical variable into a quantitative one
 
 After standardizing how measurements were recorded, having to throw out some ambiguous data points in the process (if someone knows what the "y" in "7.00 cm, y: 68 cm" means, please tell me), I created a matrix of the split strings:
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/matrix.png" height="250" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/matrix.png" height="250" align="middle"/>
 
 After that, it was as simple as multiplying together the numbers and determining the dimension (inches, square, or cubic) from how many non-missing values were in each row! It was a very tedious process, but having a column of quantitative measurements (and the accompanying categorical units column) will provide much more useful information for an EDA than the original measurements column would. I'd say it's worth it, and it demonstrates how coders can get the information they want from raw data using simple data cleaning functions in creative ways.
 
 ### Pretty (or at least prettier) Data
 After hours of work and probably too many hardcoded special cases (let me know if you have any ideas for simplifying my code), we have our cleaned dataset! 
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/clean.png" height="400" align="middle"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/clean.png" height="400" align="middle"/>
 
 ## Conclusion
 Ideally, the number of stolen art pieces will one day be zero. In the meantime, however, we can use information about these pieces to identify trends in art thefts and determine what pieces might need more protection than others. Perhaps by the time my EDA comes out, I'll have found information about the value of these pieces, their country of origin, when they were stolen, and where they were taken from. If you know where I could find this information publicly, please comment below!
