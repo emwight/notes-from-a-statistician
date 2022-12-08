@@ -37,15 +37,15 @@ A second issue that Monte Carlo solves is the question of average vs. individual
 ## Monte Carlo and D&D
 As a brief demonstration of the applicability of Monte Carlo, let's look at an example difference between average counts and a predictive distribution. For our D&D players, let's look at rolls for damage to enemies from Liam O'Brien and Sam Riegel from the show _Critical Role_. Combining prior knowledge and data from [CritRoleStats](https://www.critrolestats.com/), Bayesian analysis first produces these two distinct posterior distributions:
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/posterior.png" height="400"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/posterior.png" height="400"/>
 
 Liam clearly rolls higher than Sam, but by how much on average? [Using R and Monte Carlo](https://emwight.github.io/stat386-projects/2022/09/28/Shiny-Math-Rocks-and-Monte-Carlo.html), we simulate the difference between average damage roll and produce a single posterior distribution:
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/mc_diff.png" height="400"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/mc_diff.png" height="400"/>
 
 The two distinct posteriors are centered about three points apart from each other, which is reflected in this difference between average counts. We also get additional information on the spread of the average difference. Finally, if we wanted to determine the probability of Liam "winning" against Sam from a single damage roll, we would simulate a predictive distribution:
 
-<img src="https://github.com/emwight/stat386-projects/raw/main/assets/images/predictive.png" height="400"/>
+<img src="https://github.com/emwight/notes-from-a-statistician/raw/main/assets/images/predictive.png" height="400"/>
 
 If Liam and Sam were to each roll one time for damage, Liam is predicted to win about 62% of the time. Overall, he'll win more often, which agrees with the average difference between counts determined earlier, but there's more room for individual variation.
 
