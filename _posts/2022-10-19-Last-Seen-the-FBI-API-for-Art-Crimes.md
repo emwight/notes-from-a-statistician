@@ -3,7 +3,7 @@ layout: post
 title:  "Last Seen: the FBI API for Art Crimes"
 date:   2022-10-19
 author: Ellen Wight
-description: Stories of art crimes, while not the most-viewed subgenre of true crime, still capture national attention. This post shows how accessible the FBI art crime is and a possible way to clean the data for future analysis.
+description: Stories of art crimes, while not the most-viewed subgenre of true crime, still capture national attention. This post shows how accessible the FBI art crime API is and a possible way to clean the data for future analysis.
 image: /assets/images/paints.jpg
 ---
 _Complete code and data found in this [repo](https://github.com/emwight/artscraper)_
